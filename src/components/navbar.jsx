@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import image from "../assets/phone.png";
+import menuIcon from "../assets/icons8-menu copy.svg";
+import closeIcon from "../assets/icons8-x copy.svg";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [showNav,  setShowNav,  menunav] = useState(false);
+    const [showNav, setShowNav] = useState(false);
 
     const ToggleMenu = () => setIsOpen(!isOpen);
 
@@ -25,7 +27,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop/Tablet Navigation - shows on iPad (768px+) and larger */}
-                    <div className="hidden md:flex md:items-center ">
+                    <div className="hidden md:flex md:items-center">
                         <div className={`flex items-center space-x-4 lg:space-x-10 xl:space-x-10 ${showNav ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}`}>
                             <NavLink href="/" text="Home" />
                             <NavLink href="/premium" text="Services" />
@@ -34,34 +36,39 @@ const Navbar = () => {
                             <NavLink href="/Pricing" text="Pricing" />
                             <NavLink href="/contact" text="Contact" />
                         </div>
-                        <div className="ml-15 md:ml-0 lg:ml-4">
-                        <a 
-                            href="/contact"
-                            className="ml-3 md:ml-0 lg:ml-4 bg-[#db2777] text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-md text-base lg:text-lg font-medium hover:bg-[#c11a66] transition-colors flex items-center space-x-2"
-                        >
-                            <img src={image} alt="phone" className="w-4 h-4 lg:w-5 lg:h-5 invert " />
-                            <span>Book Now</span>
-                        </a>
+                        <div className="ml-4">
+                            <a 
+                                href="/contact"
+                                className="flex items-center gap-2 px-4 py-2 bg-[#db2777] text-white rounded-md hover:bg-[#be185d] transition-colors duration-200"
+                            >
+                                <img 
+                                    src={image} 
+                                    alt="phone" 
+                                    className="w-4 h-4 lg:w-5 lg:h-5 invert" 
+                                    loading="lazy" 
+                                    srcSet={`${image} 1x, ${image} 2x`} 
+                                />
+                                <span>Book Now</span>
+                            </a>
+                        </div>
                     </div>
-                    </div>
-
-                    {/* Mobile Menu Button - shows below 768px */}
-                    <div className={`md:hidden flex items-center ${showNav ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}`}>
+                    {/* Hamburger menu button for mobile */}
+                    <div className="md:hidden flex items-center">
                         <button 
                             onClick={ToggleMenu}
                             className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 focus:outline-none"
-                            aria-expanded={isOpen}
+                            aria-label={isOpen ? "Close menu" : "Open menu"}
                         >
                             {isOpen ? (
                                 <img
-                                    src="/public/icons8-x.svg"
+                                    src={closeIcon}
                                     width={24}
                                     height={24}
                                     alt="Close menu"
                                 />
                             ) : (
                                 <img
-                                    src="/public/icons8-menu.svg"
+                                    src={menuIcon}
                                     width={24}
                                     height={24}
                                     alt="Open menu"
@@ -71,8 +78,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-
-              {/* Mobile Menu - shows below 768px    */}
+            {/* Mobile Navigation Drawer */}
             <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} transition-transform duration-1000 ease-out  ${showNav ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}`}>
                 <div className="px-4 pt-2 pb-6 space-y-2 bg-white shadow-lg transition-transform duration-1000 ease-out">
                     <MobileNavLink href="/" text="Home" />
@@ -81,11 +87,17 @@ const Navbar = () => {
                     <MobileNavLink href="/Team" text="Team" />
                     <MobileNavLink href="/Pricing" text="Pricing" />
                     <MobileNavLink href="/contact" text="Contact" />
-                    <a 
+                    <a
                         href="/contact"
-                        className="w-full bg-[#db2777] text-white px-4 py-3 rounded-lg text-lg font-medium flex items-center justify-center gap-2 mt-2 hover:bg-[#c11a66] transition- transition-transform duration-1000 ease-out"
-                    >  
-                        <img src={image} alt="phone" className="w-5 h-5 invert" />
+                        className="flex items-center gap-2 px-4 py-2 bg-[#db2777] text-white rounded-md hover:bg-[#be185d] transition-colors duration-200 mt-2"
+                    >
+                        <img
+                            src={image}
+                            alt="phone"
+                            className="w-5 h-5 invert"
+                            loading="lazy"
+                            srcSet={`${image} 1x, ${image} 2x`}
+                        />
                         <span>Book Now</span>
                     </a>
                 </div>

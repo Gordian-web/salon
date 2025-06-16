@@ -9,7 +9,7 @@ const BackToTop = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.setTimeout >  300) {
+      if (window.scrollY >  300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);

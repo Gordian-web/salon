@@ -36,7 +36,7 @@ function App() {
             </>
           }
         />
-        <Route path="/detail"   element={<Details />} />
+        <Route path="/detail"element={<Details />} />
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/contact" element={<CoNtact />} />
         <Route path="/premium" element={<PreMium />} />
