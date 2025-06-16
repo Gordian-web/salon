@@ -2,7 +2,7 @@ import facebook from '../assets/facebook.png';
 import images from '../assets/twitter.png';
 import img from '../assets/instagram.png';
 import imag from '../assets/color specialist.png';
-import picture from '../assets/Creative director.png';
+import picture from '../assets/creative director.png';
 import pic from '../assets/snr stylist.png';
 import pix from '../assets/stylist consultant.png';
 import { useEffect, useState } from 'react';
